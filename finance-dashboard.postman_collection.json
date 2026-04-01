@@ -1,0 +1,429 @@
+{
+  "info": {
+    "_postman_id": "c49466bb-c87e-4a54-99b4-be3056a64324",
+    "name": "finance-dashboard",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49726729",
+    "_collection_link": "https://go.postman.co/collection/49726729-c49466bb-c87e-4a54-99b4-be3056a64324?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register Admin User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Admin\",\r\n  \"email\": \"admin@test.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"admin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"admin@test.com\",\r\n  \"password\": \"123456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create records",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkZTIzYjEzLTk4NmUtNGMxMC1iYTUwLTkwZmEzMDdiMjU4NiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzUwNTY3NTAsImV4cCI6MTc3NTE0MzE1MH0.y4Gn_zBZl6p4N9INYgSkEgBixua82ZGWyh3cgoYpj30",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"amount\": 1000,\r\n  \"type\": \"expense\",\r\n  \"category\": \"travel\",\r\n  \"date\": \"2026-03-28\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "records"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Records",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkZTIzYjEzLTk4NmUtNGMxMC1iYTUwLTkwZmEzMDdiMjU4NiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzUwNTY3NTAsImV4cCI6MTc3NTE0MzE1MH0.y4Gn_zBZl6p4N9INYgSkEgBixua82ZGWyh3cgoYpj30",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"amount\": 1000,\r\n  \"type\": \"expense\",\r\n  \"category\": \"travel\",\r\n  \"date\": \"2026-03-28\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/records?page=1&limit=10&type=expense",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "records"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "type",
+              "value": "expense"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Dashboard APIs",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkZTIzYjEzLTk4NmUtNGMxMC1iYTUwLTkwZmEzMDdiMjU4NiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzUwNTY3NTAsImV4cCI6MTc3NTE0MzE1MH0.y4Gn_zBZl6p4N9INYgSkEgBixua82ZGWyh3cgoYpj30",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/dashboard/summary",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "dashboard",
+            "summary"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Categories",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkZTIzYjEzLTk4NmUtNGMxMC1iYTUwLTkwZmEzMDdiMjU4NiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzUwNTY3NTAsImV4cCI6MTc3NTE0MzE1MH0.y4Gn_zBZl6p4N9INYgSkEgBixua82ZGWyh3cgoYpj30",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/dashboard/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "dashboard",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Trends",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkZTIzYjEzLTk4NmUtNGMxMC1iYTUwLTkwZmEzMDdiMjU4NiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzUwNTY3NTAsImV4cCI6MTc3NTE0MzE1MH0.y4Gn_zBZl6p4N9INYgSkEgBixua82ZGWyh3cgoYpj30",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/dashboard/trends",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "dashboard",
+            "trends"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Analyst User (TEST RBAC)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkZTIzYjEzLTk4NmUtNGMxMC1iYTUwLTkwZmEzMDdiMjU4NiIsImVtYWlsIjoiYWRtaW5AdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzUwNTY3NTAsImV4cCI6MTc3NTE0MzE1MH0.y4Gn_zBZl6p4N9INYgSkEgBixua82ZGWyh3cgoYpj30",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Analyst\",\r\n  \"email\": \"analyst@test.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"analyst\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "analystLogin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"analyst@test.com\",\r\n  \"password\": \"123456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "rbac",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkYjI3ZTlmLTkxODEtNDJkMC1iYWNjLTM3MmI5ZmFkNGVmYSIsImVtYWlsIjoiYW5hbHlzdEB0ZXN0LmNvbSIsInJvbGUiOiJhbmFseXN0IiwiaWF0IjoxNzc1MDU4MjY0LCJleHAiOjE3NzUxNDQ2NjR9.Hut6TfuzH93tTjhP4yrJ3zp4WfhcRdDZF8G1hw9GpNo",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/dashboard/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "dashboard",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "creating user",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiMTVhYzRlLTFiYWQtNDllZC1iNDc2LTljOTA0ODc0NDgwNyIsImVtYWlsIjoidmlld2VyQHRlc3QuY29tIiwicm9sZSI6InZpZXdlciIsImlhdCI6MTc3NTA1ODU3MywiZXhwIjoxNzc1MTQ0OTczfQ.plgpqldCRtazSqy_OkbMqEATyKndBAOvQ-onJpMcXgA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"amount\": 5000,\r\n  \"type\": \"income\",\r\n  \"category\": \"salary\",\r\n  \"date\": \"2026-04-01\",\r\n  \"notes\": \"Salary\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/records",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "records"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
